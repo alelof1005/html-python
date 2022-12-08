@@ -6,7 +6,8 @@ player_health=100
 def reduce_player_health(damage):
     global player_health
     player_health = player_health - damage
-
+    
+ 
 
 
 def trap():
