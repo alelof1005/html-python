@@ -12,16 +12,18 @@ def print_slow(str):
         sys.stdout.flush()
         time.sleep(0.00)
         # time.sleep(0.07)
-
+ 
 def skydda ():
     print ("Du har valt att konfrontera tjuven")
     print ("Hur ska du göra?")
     print ("1. Attackera")
     print ("2. Du ropar på den främmande varelsen")
     input ("")
-    print (f"Du anfaller tjuven med {v")
+    print (f"Du anfaller tjuven med {välj_vapen}")
     reduce_tjuv_health(get_damage())
     print (f"Tjuven har {tjuv_health}hp kvar")
+
+ 
 
 player_health=100
 def reduce_player_health(damage):
@@ -29,7 +31,7 @@ def reduce_player_health(damage):
     player_health = player_health - damage
 
 
-tjuv_health= random.randint 50, 99
+tjuv_health= random.randint (50, 99)
 def reduce_tjuv_health(damage):
     global tjuv_health
     tjuv_health = tjuv_health - damage
@@ -53,35 +55,66 @@ def get_damage():
 def gömma ():  
     print ("Du har valt att gömma dig")
     print ("Vilket rum väljer du att gömma dig på?")
-    print ("Sovrum, Vardagsrum eller Källaren")
-    rum = input ("Välj:")
-    print (rum)
+    print ("1. Sovrum")
+    print ("2. Vardagsrum")
+    print ("3. Källaren")
+    välj_vapen = input("Välj rum: ")
+    if välj_vapen == "1":
+        print_slow ("Du har valt att gömma dig i sovrummet\n") 
+    elif välj_vapen == "2":
+        print_slow ("Du har valt att gömma dig i vardagsrummet\n") 
+    elif välj_vapen == "3":
+            print_slow ("Du har valt att gömma dig i källaren\n")
+    print ("Du har ungefär 70 % chans att undvika tjuven")
+    ab= random.randint (1,2)
+    if ab == 2 :
+        print("Tjuven hittade dig och dödade dig")
+        return False
+    else:
+        print("Du lyckades för tillfället att undvika tjuven")
+        return True
 
-startGame = input("Vill du påbörja spelet? (Y/N): ")
-if startGame == "n" or startGame == "N":
-    print("Kanske någon annan gång.")
-    time.sleep(3)
-elif startGame == "y" or startGame == "Y":
-   player = input("Ange ditt namn: ") 
-time.sleep(2)
-print_slow("Du vaknar upp mitt i natten till ett ljud av ett fönster som krossas\n") 
-print_slow("Du reser dig upp genast och går direkt till vapenskåpet.\n")
-print_slow("Vilket vapen väljer du? \n")
-print("1. Hagelbössa")
-print("2. Yxa")
-print("3. Revolver")
-välj_vapen = input("Välj vapen: ")
-if välj_vapen == "1":
-    print ("Hagelbössa")
-elif välj_vapen == "2":
-    print ("Yxa")
-elif välj_vapen == "3":
-    print ("Revolver")
+print("Du kollar ut genom fönsret och ser att det står flera olika främmande på bilar på uppfarten\n")
+print("Då inser du att det inte bara handlar om en tjuv")
+print("Du inser att detta kommer bli tufft så du går och hämtar en skyddsväst")
+ofl=random.randint(15,30)
 
-print_slow (f"Du har valt att använda {välj_vapen}\n") 
-print_slow ("Någon börjar närma sig ditt rum, tänker du kolla vem det är eller gömma dig? \n")
-alternativ1 = input("1.Jag gömmer mig\n2.Jag ska leta upp hen och kämpa emot\n")
-if alternativ1 == "1":  
-    gömma()
-else: skydda()
 
+while True:
+    startGame = input("Vill du påbörja spelet? (Y/N): ")
+    if startGame == "n" or startGame == "N":
+        print("Kanske någon annan gång.")
+        time.sleep(3)
+    elif startGame == "y" or startGame == "Y":
+        player = input("Ange ditt namn: ") 
+        time.sleep(2)
+        print_slow("Du vaknar upp mitt i natten till ett ljud av ett fönster som krossas\n") 
+        print_slow("Du reser dig upp genast och går direkt till vapenskåpet.\n")
+        print_slow("Vilket vapen väljer du? \n")
+        print("1. Hagelbössa")
+        print("2. Yxa")
+        print("3. Revolver")
+        välj_vapen = input("Välj vapen: ")
+        if välj_vapen == "1":
+            print_slow ("Du har valt att använda Hagelbössa\n") 
+        elif välj_vapen == "2":
+            print_slow ("Du har valt att använda Yxa\n") 
+        elif välj_vapen == "3":
+            print_slow ("Du har valt att använda Revolver\n") 
+        print_slow ("Någon börjar närma sig ditt rum, tänker du kolla vem det är eller gömma dig? \n")
+        alternativ1 = input("1.Jag gömmer mig\n2.Jag ska leta upp han och kämpa emot\n")
+        if alternativ1 == "1":  
+            lyckades_gömma = gömma()
+            if lyckades_gömma == False:
+                restart = input('Vill du starta om? Y/N: ')
+                if restart == 'N':
+                    break
+                elif restart == 'Y':
+                    continue
+        else: skydda()
+    print_slow("Du kollar ut genom fönsret och ser att det står flera olika främmande på bilar på uppfarten\n")
+    print_slow("Då inser du att det inte bara handlar om en tjuv\n")
+    print_slow("Du inser att detta kommer bli tufft så du går och hämtar en skyddsväst\n")
+    ofl=random.randint(15,30)
+    player_health2=ofl+player_health
+    print(f"Du använder skyddsvästen och har nu {player_health2}hp")
