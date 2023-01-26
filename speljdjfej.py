@@ -6,6 +6,13 @@ import random
 inventory = []
 välj_vapen = ""
 
+
+
+
+
+
+
+
 a = 2
 b = 0.2
 c = 0.08
@@ -17,15 +24,38 @@ def print_slow(str):
         time.sleep(0.00)
         # time.sleep(0.07)
 
+def loot ():
+    lootchance=random.randint (1,100)
+    if lootchance >= 90:
+        print("Du har fått en guldtacka\n")
+        inventory.append("guldtacka")   
+    elif lootchance >=70:
+        print("Du har fått en kortlek\n")
+        inventory.append("kortlek")
+    elif lootchance >=40:
+        print("Du har fått ett äpple\n")
+        inventory.append("äpple")
+    elif lootchance >= 10:
+        print("Du hittar en påse jordnötter\n")
+        inventory.append("jordnötts påse")
+    elif lootchance >=1:
+        print("Du hittar ett tomt godis papper\n")
+        inventory.append("tomt godis papper")
+    menu()
+    
+
+    
+
+
 def menu ():
     while True:
         print("Meny välj ett alternativ:")
-        print("1. Slåss mot fler tjuvar")
+        print("1. Fortsätt slåss")
         print("2. Starta om spelet")
         print("3. Öppna inventory")
         menuchoice=input()
         if menuchoice == "1":
-            (tjuv_fight)
+            tjuv_fight()
             break
         elif menuchoice== "2":
             game()
@@ -44,8 +74,34 @@ def print_inventory ():
         print(x)
     menu()
 
-#def tjuv_fight ():
- 
+def tjuv_fight ():
+    while True:
+        print(f"Tjuven har {tjuv_health} hp")
+        print("Du attackerar honom")
+        reduce_tjuv_health(get_damage())
+        print (f"Tjuven har nu {tjuv_health} hp kvar")
+        if tjuv_health <= 0:
+            tjuv_health==0
+            print_slow ("Grattis du har vunnit\n")
+            loot ()  
+            break
+        else:
+            print("Tjuven attackerar dig")
+            reduce_player_health(dmg)
+            if dmg >= 30:
+                print("Tjuven fick in en kritisk träff på dig")
+                print(f"Du förlorade {dmg} hp och har nu {player_health} hp kvar")
+            else:
+                print(f"Du förlorade {dmg} hp och har nu {player_health} hp kvar")               
+            if player_health <= 0:
+                print ("Du har förlorat\n")
+                break
+        menu()
+        
+
+dmg=random.randint (15, 40)
+
+
 
 
 player_health=100
@@ -110,7 +166,6 @@ def gömma ():
         else:
             print("Du lyckades för tillfället att undvika tjuven")
             return True
-        
             
 
 
