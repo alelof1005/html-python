@@ -103,7 +103,7 @@ def butik ():
                 print("Köp slutfört.")
                 check_balance()
             else:
-                print("Purchase not completed.")
+                print("Köp mysslyckats.")
         else:
             inventory.append(item_name)
             exp -= item_cost
