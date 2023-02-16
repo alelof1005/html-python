@@ -147,7 +147,7 @@ def skydda ():
         print(f"Du får en adrenalin kick som ger dig {bonus} extra hp\n")
         while player_health >0 and tjuv_health >0:
             tjuvdmg=random.randint(10,35)
-            print (f"Du anfaller tjuven med {vapen_namn()}")
+            print (f"Du anfaller monstret med {vapen_namn()}")
             reduce_tjuv_health(get_damage())
             print (f"Monstret har {tjuv_health}hp kvar")
             print ("Monstret anfaller dig")
